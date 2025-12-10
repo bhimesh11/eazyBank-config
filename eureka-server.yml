@@ -3,12 +3,10 @@ server:
 
 eureka:
   instance:
-    hostname: eurekaserver   # not localhost in Docker
-
+    hostname: localhost
   client:
-    registerWithEureka: false
     fetchRegistry: false
+    registerWithEureka: false
     serviceUrl:
-      # override the default 8761 URL
-      defaultZone: http://eurekaserver:8070/eureka/
-      # or "" if you really want zero peers
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+    
